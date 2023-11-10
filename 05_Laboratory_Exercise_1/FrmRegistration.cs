@@ -34,13 +34,36 @@ namespace _05_Laboratory_Exercise_1
             string docPath2 = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
             StreamWriter outputFile = new StreamWriter(Path.Combine(docPath2, setFileName));
 
-            string[] info = { "StudentNo.:" + getStudentNo, "FullName:" + getFirstName + " " + getMiddleName + " " + getLastName, "Program:" + getList + "Age:" + getAge, "Birthday:" + getBirthday, "ContactNo.:" + getContactNo };
+            string[] info = { "StudentNo.:" + getStudentNo, "FullName:" + getFirstName + " " + getMiddleName + " " + getLastName, "Program:" + getList + "Age:" + getAge, "Birthday:" + getBirthday, "ContactNo.:" + getContactNo, "Gender: " + getGender, };
             Console.WriteLine(getStudentNo);
-            foreach(string i in info)
-            outputFile.WriteLine(i);
+            foreach (string i in info)
+            {
+                outputFile.WriteLine(i);
+            }
             outputFile.Close();
+            MessageBox.Show("Successfully saved!!!");
             Close();
+        }
 
+        private void FrmRegistration_Load(object sender, EventArgs e)
+        {
+            string[] ListOfProgram = new string[] { "BS Information Technology",
+                                                    "BS Computer Science",
+                                                    "BS Information Systems",
+                                                    "BS in Accountancy",
+                                                    "BS in Hospitality Management",
+                                                    "BS in Tourism Management" };
+            for (int i = 0; i < 6; i++)
+            {
+                comboProgram.Items.Add(ListOfProgram[i].ToString());
+            }
+
+            string[] listGender = new string[] { "Male", "Female" };
+
+            for (int i = 0; i < 2; i++)
+            {
+                comboGender.Items.Add(listGender[i].ToString());
+            }
         }
     }
 }
